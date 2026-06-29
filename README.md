@@ -16,6 +16,22 @@ Implementação inicial organizada a partir dos volumes numerados do backlog.
 - Volume 9: `Income` com validações obrigatórias, valor positivo, vínculo a workspace/conta/categoria e eventos para recálculo.
 - Volumes 1 a 6: base de domínio para despesas e serviços puros de inteligência financeira (`financialHealthScore`, `rankDebts`, `forecastCashflow`) sem persistência automática, seguindo as regras de simulação reversível.
 
+## Backend .NET scaffold
+
+A pasta `backend/` contém a estrutura planejada para a implementação principal em .NET 10, organizada em Domain, Application, Infrastructure, Api e Tests. Ela cobre o próximo incremento do plano: Workspace bootstrap, Financial Accounts, Categories mínimas e Income Management.
+
+Validação disponível neste ambiente:
+
+```bash
+npm run validate:scaffold
+```
+
+Compilação esperada em ambiente com .NET 10 SDK:
+
+```bash
+dotnet build backend/FloraFinance.sln
+```
+
 ## Comandos
 
 ```bash
