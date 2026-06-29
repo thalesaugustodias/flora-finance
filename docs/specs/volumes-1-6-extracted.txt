@@ -1,0 +1,912 @@
+
+### FloraFinance_Backlog_Volume1.pdf
+Flora Finance - Product Backlog Volume 1
+Epic 01 - Foundation & Identity
+US-001 - Criar Conta
+Como visitante quero criar uma conta para utilizar o sistema.
+Critérios de Aceitação
+• Cadastro com nome, email e senha.
+• Email único.
+• Senha forte.
+• Workspace criado.
+• JWT emitido.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-002 - Login
+Como usuário quero autenticar para acessar meus dados.
+Critérios de Aceitação
+• JWT + Refresh Token.
+• Bloqueio após tentativas.
+• Auditoria.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-003 - Recuperar Senha
+Como usuário quero redefinir minha senha.
+Critérios de Aceitação
+• Token temporário.
+• Expiração.
+• Nova senha obrigatória.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-004 - Dashboard
+Como usuário quero visualizar meu resumo financeiro.
+Critérios de Aceitação
+• Saldo.
+• KPIs.
+• Alertas.
+• Próximos vencimentos.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-005 - Conta Financeira
+Como usuário quero cadastrar contas bancárias.
+Critérios de Aceitação
+• Nome.
+• Tipo.
+• Saldo inicial.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-006 - Receita
+Como usuário quero registrar receitas.
+Critérios de Aceitação
+• Valor positivo.
+• Categoria.
+• Atualiza dashboard.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-007 - Despesa
+Como usuário quero registrar despesas.
+Critérios de Aceitação
+• Valor positivo.
+• Recorrência opcional.
+• Parcelamento opcional.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-008 - Categorias
+Como usuário quero gerenciar categorias.
+Critérios de Aceitação
+• Criar.
+• Editar.
+• Inativar.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-009 - Cartíes
+Como usuário quero cadastrar cartíes.
+Critérios de Aceitação
+• Limite.
+• Fechamento.
+• Vencimento.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+US-010 - Importação CSV
+Como usuário quero importar movimentaçíes.
+Critérios de Aceitação
+• Validação.
+• Pré-visualização.
+• Rollback em falhas.
+Tasks: Backend (.NET 10, CQRS, Vertical Slice), Frontend (Angular 20), PostgreSQL,
+testes, OpenAPI.
+
+### FloraFinance_Backlog_Volume2.pdf
+Flora Finance - Product Backlog Volume 2
+Epic 02 - Dashboard & Cash Flow
+US-011 - Dashboard Executivo
+Histéria: Como usuçrio desejo visualizar um painel com KPIs financeiros para entender
+minha situaã•o em menos de 30 segundos.
+Critúrios de Aceitaã•o
+á Exibir saldo consolidado.
+á Receitas x despesas do mós.
+á Préximos vencimentos em atú 15 dias.
+á Indicador de saêde financeira.
+á Atualizaã•o em tempo real apés operaãíes.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-012 - Fluxo de Caixa Mensal
+Histéria: Como usuçrio desejo visualizar o fluxo previsto do mós para antecipar
+problemas de caixa.
+Critúrios de Aceitaã•o
+á Calendçrio financeiro.
+á Receitas previstas.
+á Despesas previstas.
+á Saldo projetado diçrio.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-013 - Lanãamento Recorrente
+Histéria: Como usuçrio desejo cadastrar receitas/despesas recorrentes para evitar
+lanãamentos manuais.
+Critúrios de Aceitaã•o
+á Periodicidade diçria/semanal/mensal/anual.
+á Permitir encerramento da recorróncia.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-014 - Transferóncias
+Histéria: Como usuçrio desejo transferir valores entre contas sem alterar meu
+patrim\012nio.
+Critúrios de Aceitaã•o
+á Origem e destino obrigatérios.
+á Saldo atualizado nas duas contas.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-015 - Calendçrio Financeiro
+Histéria: Como usuçrio desejo acompanhar vencimentos em calendçrio.
+Critúrios de Aceitaã•o
+á Filtros.
+á Cores por tipo.
+á Abrir detalhe do lanãamento.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-016 - Metas Financeiras
+Histéria: Como usuçrio desejo definir metas para acompanhar evoluã•o.
+Critúrios de Aceitaã•o
+á Valor alvo.
+á Data limite.
+á Percentual conclu\013do.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-017 - Alertas
+Histéria: Como usuçrio desejo receber alertas de vencimentos préximos.
+Critúrios de Aceitaã•o
+á Configuraã•o de antecedóncia.
+á Alerta no dashboard.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-018 - Centro de Custos
+Histéria: Como usuçrio desejo agrupar despesas por centro de custo.
+Critúrios de Aceitaã•o
+á CRUD completo.
+á Relatérios por centro.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-019 - Conciliaã•o
+Histéria: Como usuçrio desejo marcar lanãamentos como conciliados.
+Critúrios de Aceitaã•o
+á Status conciliado.
+á Data da conciliaã•o.
+á Histérico.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+US-020 - Resumo Mensal
+Histéria: Como usuçrio desejo encerrar um mós e visualizar indicadores consolidados.
+Critúrios de Aceitaã•o
+á Total receitas.
+á Total despesas.
+á Economia.
+á Top categorias.
+á Exportaã•o PDF futura.
+Regras Túcnicas: Vertical Slice, CQRS, FluentValidation, EF Core, Angular 20 Signals,
+PrimeNG, PostgreSQL, testes unitçrios e integraã•o obrigatérios.
+
+### FloraFinance_Backlog_Volume3.pdf
+Flora Finance - Volume 3
+EPIC 03 - Credit Cards & Debt Management
+US-021 - Cadastrar Cartéo
+Como usuçrio
+Quero cadastrar um cartéo de crãdito
+Para centralizar o gerenciamento
+Regras de Neg•cio
+ú Nome obrigat•rio.
+ú Bandeira obrigat•ria.
+ú Fechamento e vencimento obrigat•rios.
+ú Limite maior que zero.
+ú Pode ser marcado como inativo.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-022 - Registrar Fatura
+Como usuçrio
+Quero registrar uma fatura
+Para acompanhar gastos
+Regras de Neg•cio
+ú Relacionada a um cartéo.
+ú Competóncia obrigat•ria.
+ú Valor total positivo.
+ú Status Aberta/Paga/Atrasada.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-023 - Parcelas
+Como usuçrio
+Quero visualizar parcelas
+Para prever compromissos futuros
+Regras de Neg•cio
+ú Cada compra gera N parcelas.
+ú Parcelas futuras entram na projeáéo.
+ú Permitir antecipaáéo l•gica.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-024 - Pagamento de Fatura
+Como usuçrio
+Quero registrar pagamento
+Para manter hist•rico
+Regras de Neg•cio
+ú Pagamento parcial permitido.
+ú Pagamento total encerra fatura.
+ú Atualiza fluxo de caixa.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-025 - Renegociaáéo
+Como usuçrio
+Quero renegociar uma dêvida
+Para reduzir impacto financeiro
+Regras de Neg•cio
+ú Registrar CET.
+ú Quantidade de parcelas.
+ú Valor original preservado.
+ú Hist•rico imutçvel.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-026 - Bloquear Cartéo
+Como usuçrio
+Quero bloquear cartéo
+Para evitar novos gastos
+Regras de Neg•cio
+ú Cartéo bloqueado néo aceita novos lanáamentos.
+ú Hist•rico preservado.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-027 - Cancelar Cartéo
+Como usuçrio
+Quero cancelar cartéo
+Para encerrar relacionamento
+Regras de Neg•cio
+ú Somente sem faturas abertas ou com confirmaáéo explêcita.
+ú Néo excluir hist•rico.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-028 - Utilizaáéo do Limite
+Como usuçrio
+Quero acompanhar limite
+Para evitar excesso
+Regras de Neg•cio
+ú Mostrar limite disponêvel.
+ú Percentual utilizado.
+ú Alerta acima de 80%.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-029 - Simulaáéo de Quitaáéo
+Como usuçrio
+Quero simular quitaáéo
+Para tomar melhores decisíes
+Regras de Neg•cio
+ú Comparar cençrios.
+ú Exibir economia estimada de juros.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+US-030 - Ranking de Dêvidas
+Como usuçrio
+Quero priorizar dêvidas
+Para quitar estrategicamente
+Regras de Neg•cio
+ú Ordenar por juros, impacto mensal e vencimento.
+ú Permitir filtro e ordenaáéo.
+Critãrios de Aceite
+Operaáéo persistida; dashboard atualizado; auditoria registrada; testes unitçrios e
+integraáéo aprovados.
+Tarefas Tãcnicas
+: Vertical Slice, Command/Handler, Validator, Endpoint, EF Migration,
+Angular Signals, PrimeNG, testes Playwright.
+
+### FloraFinance_Backlog_Volume4.pdf
+Flora Finance - Volume 4
+EPIC 04 - Loans, Financing & Financial Planning
+US-031 - Cadastrar Empréstimo
+Histçria: Como usuãrio desejo registrar empréstimos com taxa, parcelas e sistema de
+amortiza•úo. para tomar decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-032 - Cadastrar Financiamento
+Histçria: Como usuãrio desejo registrar financiamentos de veêculo/imçvel. para tomar
+decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-033 - Simular Antecipa•úo
+Histçria: Como usuãrio desejo simular antecipa•úo de parcelas e economia de juros.
+para tomar decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-034 - Planejamento Anual
+Histçria: Como usuãrio desejo planejar salãrio, 13í, férias, b\012nus e receitas extras.
+para tomar decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-035 - Objetivos Financeiros
+Histçria: Como usuãrio desejo criar metas como quitar dêvida ou reserva de
+emerg\013ncia. para tomar decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-036 - Reserva de Emerg\013ncia
+Histçria: Como usuãrio desejo acompanhar evolu•úo da reserva. para tomar decisáes
+financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-037 - Proje•úo Financeira
+Histçria: Como usuãrio desejo projetar saldo para 12, 24 e 60 meses. para tomar
+decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-038 - Alerta de Insolv\013ncia
+Histçria: Como usuãrio desejo detectar meses com saldo negativo futuro. para tomar
+decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-039 - Plano de Recupera•úo
+Histçria: Como usuãrio desejo gerar plano automãtico priorizando dêvidas por impacto.
+para tomar decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+US-040 - Relatçrio Executivo
+Histçria: Como usuãrio desejo emitir resumo financeiro consolidado. para tomar
+decisáes financeiras melhores.
+Regras de Negçcio
+ó Todos os valores monetãrios devem suportar alta precisúo decimal.
+ó Toda altera•úo gera auditoria.
+ó Opera•áes atualizam proje•áes financeiras.
+ó Núo excluir histçrico financeiro; apenas inativar registros quando aplicãvel.
+Critérios de Aceite (BDD)
+Dado um usuãrio autenticado, quando concluir a opera•úo com sucesso, entúo o
+sistema deve persistir os dados, atualizar o dashboard, recalcular proje•áes e registrar
+auditoria.
+Tarefas Técnicas
+: Command, Handler, Validator, Endpoint, Migration PostgreSQL,
+DTOs, testes unitãrios, integra•úo, Playwright e documenta•úo OpenAPI.
+
+### FloraFinance_Backlog_Volume5.pdf
+Flora Finance - Product Backlog Volume 5
+EPIC 05 - Financial Intelligence & Automation
+US-041 - Financial Health Score
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-042 - AI Recovery Plan
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-043 - Debt Priority Engine
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-044 - Cashflow Forecast
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-045 - Budget Recommendation
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-046 - Smart Notifications
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-047 - Monthly Closing Wizard
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-048 - Financial Timeline
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-049 - Decision Simulator
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+US-050 - Executive Financial Report
+Histéria
+: Como usuçrio desejo utilizar esta funcionalidade para receber apoio na
+tomada de decisães financeiras baseado em proje•ães, regras de negécio e dados
+histéricos.
+Objetivo de Negécio
+: reduzir inadimplúncia, aumentar previsibilidade do fluxo de caixa
+e auxiliar a quita•áo de dóvidas.
+Regras de Negécio
+ê Nenhuma recomenda•áo pode alterar dados automaticamente.
+ê Todas as simula•ães devem ser reversóveis e náo persistentes.
+ê Toda proje•áo deve considerar receitas recorrentes, despesas recorrentes,
+parcelamentos e financiamentos.
+ê Resultados devem ser recalculados apés qualquer altera•áo financeira.
+Critírios de Aceita•áo (BDD)
+Dado um usuçrio autenticado, quando solicitar uma ançlise, entáo o sistema deverç
+gerar recomenda•ães, apresentar justificativas e permitir simula•ães sem alterar os
+dados reais.
+Tarefas Tícnicas
+: CQRS, Vertical Slice, DTOs, Endpoints REST, testes unitçrios,
+integra•áo, Playwright, OpenAPI, observabilidade e auditoria.
+Contexto para IA
+: Implementar sem légica no controller; utilizar servi•os de domónio
+para cçlculos, consultas separadas dos comandos e arquitetura definida no projeto.
+
+### FloraFinance_Backlog_Volume6.pdf
+Flora Finance - Volume 6
+EPIC 06 - Reporting, Administration & Observability
+US-051 - Gerar Relatério PDF
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-052 - Exportar Excel/CSV
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-053 - Logs de Auditoria
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-054 - Timeline Financeira
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-055 - Health Checks
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-056 - Painel Administrativo
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-057 - Gerenciamento de Categorias Globais
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-058 - Backup e Restore
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-059 - Configuraã•o de Notificaãáes
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
+US-060 - Configuraã•o da Conta
+Histéria: Como usuçrio autenticado desejo utilizar esta funcionalidade para melhorar a
+governanãa, rastreabilidade e administraã•o da plataforma.
+Objetivo: Fornecer recursos administrativos e de relatérios mantendo seguranãa,
+auditabilidade e facilidade de uso.
+Regras de Negécio
+ú Toda operaã•o administrativa deve gerar auditoria.
+ú Relatérios devem respeitar o escopo do usuçrio autenticado.
+ú Exportaãáes n•o podem conter dados de outros usuçrios.
+ú Backups somente para administradores.
+ú Health Checks n•o devem expor informaãáes sensóveis.
+Critêrios de Aceitaã•o
+Dado um usuçrio autorizado, quando executar a funcionalidade, ent•o o sistema
+deverç concluir a operaã•o, registrar auditoria, retornar resposta adequada e manter
+rastreabilidade completa.
+Tarefas Têcnicas
+: Minimal APIs, CQRS, Vertical Slice, EF Core, PostgreSQL,
+OpenTelemetry, Serilog, HealthChecks, Angular 20 + PrimeNG, testes unitçrios,
+integraã•o e Playwright.
