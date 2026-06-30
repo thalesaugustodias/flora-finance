@@ -1,10 +1,12 @@
 using FloraFinance.Application.Abstractions;
 using FloraFinance.Application.Accounts;
 using FloraFinance.Application.Incomes;
+using FloraFinance.Application.Expenses;
 using FloraFinance.Application.Workspaces;
 using FloraFinance.Domain.Accounts;
 using FloraFinance.Domain.Categories;
 using FloraFinance.Domain.Incomes;
+using FloraFinance.Domain.Expenses;
 using FloraFinance.Domain.Workspaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,5 +40,17 @@ public sealed class IncomeRepository(FloraFinanceDbContext db) : IIncomeReposito
         if (from.HasValue) query = query.Where(x => x.ReceivedDate >= from.Value);
         if (to.HasValue) query = query.Where(x => x.ReceivedDate <= to.Value);
         return await query.OrderByDescending(x => x.ReceivedDate).Select(x => new IncomeResponse(x.Id, x.WorkspaceId, x.AccountId, x.CategoryId, x.Description, x.Amount, x.Currency.Code, x.ReceivedDate, x.Observation, x.CreatedAt)).ToListAsync(cancellationToken);
+    }
+}
+
+public sealed class ExpenseRepository(FloraFinanceDbContext db) : IExpenseRepository
+{
+    public async Task AddAsync(Expense expense, CancellationToken cancellationToken) => await db.Expenses.AddAsync(expense, cancellationToken);
+    public async Task<IReadOnlyList<ExpenseResponse>> ListAsync(Guid workspaceId, DateOnly? from, DateOnly? to, CancellationToken cancellationToken)
+    {
+        var query = db.Expenses.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null);
+        if (from.HasValue) query = query.Where(x => x.DueDate >= from.Value);
+        if (to.HasValue) query = query.Where(x => x.DueDate <= to.Value);
+        return await query.OrderBy(x => x.DueDate).Select(x => new ExpenseResponse(x.Id, x.WorkspaceId, x.AccountId, x.CategoryId, x.Description, x.Amount, x.Currency.Code, x.DueDate, x.PaidDate, x.Observation, x.IsRecurring, x.InstallmentNumber, x.InstallmentTotal, x.CreatedAt)).ToListAsync(cancellationToken);
     }
 }

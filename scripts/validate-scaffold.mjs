@@ -6,12 +6,16 @@ const requiredFiles = [
   'backend/FloraFinance.Domain/Accounts/FinancialAccount.cs',
   'backend/FloraFinance.Domain/Categories/Category.cs',
   'backend/FloraFinance.Domain/Incomes/Income.cs',
+  'backend/FloraFinance.Domain/Expenses/Expense.cs',
   'backend/FloraFinance.Application/Workspaces/RegisterUserWorkspaceBootstrap.cs',
   'backend/FloraFinance.Application/Workspaces/WorkspaceQueries.cs',
   'backend/FloraFinance.Application/Workspaces/UpdateWorkspace.cs',
   'backend/FloraFinance.Application/Accounts/AccountQueries.cs',
   'backend/FloraFinance.Application/Incomes/IncomeQueries.cs',
+  'backend/FloraFinance.Application/Expenses/CreateExpense.cs',
+  'backend/FloraFinance.Application/Expenses/ExpenseQueries.cs',
   'backend/FloraFinance.Api/Endpoints/WorkspaceEndpoints.cs',
+  'backend/FloraFinance.Api/Endpoints/ExpenseEndpoints.cs',
   'backend/FloraFinance.Infrastructure/Persistence/FloraFinanceDbContext.cs',
   'backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql'
 ];
@@ -30,8 +34,12 @@ const workspaceEndpoints = readFileSync('backend/FloraFinance.Api/Endpoints/Work
 for (const expected of ['MapGet(""', 'MapGet("{id:guid}"', 'MapPut("{id:guid}"', 'MapDelete("{id:guid}"']) {
   if (!workspaceEndpoints.includes(expected)) throw new Error(`Workspace endpoints missing ${expected}`);
 }
+const expenseEndpoints = readFileSync('backend/FloraFinance.Api/Endpoints/ExpenseEndpoints.cs', 'utf8');
+for (const expected of ['MapPost(""', 'MapGet(""']) {
+  if (!expenseEndpoints.includes(expected)) throw new Error(`Expense endpoints missing ${expected}`);
+}
 const migration = readFileSync('backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql', 'utf8');
-for (const expected of ['CREATE TABLE IF NOT EXISTS workspaces', 'financial_accounts', 'categories', 'incomes']) {
+for (const expected of ['CREATE TABLE IF NOT EXISTS workspaces', 'financial_accounts', 'categories', 'incomes', 'expenses']) {
   if (!migration.includes(expected)) throw new Error(`Migration missing ${expected}`);
 }
 console.log('Scaffold validation passed');

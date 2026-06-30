@@ -57,3 +57,27 @@ CREATE TABLE IF NOT EXISTS incomes (
     deleted_at timestamptz NULL
 );
 CREATE INDEX IF NOT EXISTS ix_incomes_workspace_received_date ON incomes(workspace_id, received_date) WHERE deleted_at IS NULL;
+
+CREATE TABLE IF NOT EXISTS expenses (
+    id uuid PRIMARY KEY,
+    workspace_id uuid NOT NULL REFERENCES workspaces(id),
+    account_id uuid NOT NULL REFERENCES financial_accounts(id),
+    category_id uuid NOT NULL REFERENCES categories(id),
+    description varchar(160) NOT NULL,
+    amount numeric(18,2) NOT NULL CHECK (amount > 0),
+    currency varchar(3) NOT NULL,
+    due_date date NOT NULL,
+    paid_date date NULL,
+    observation text NULL,
+    is_recurring boolean NOT NULL DEFAULT false,
+    installment_number integer NULL,
+    installment_total integer NULL,
+    created_at timestamptz NOT NULL,
+    updated_at timestamptz NULL,
+    deleted_at timestamptz NULL,
+    CONSTRAINT ck_expenses_installment CHECK (
+        (installment_number IS NULL AND installment_total IS NULL)
+        OR (installment_number BETWEEN 1 AND installment_total)
+    )
+);
+CREATE INDEX IF NOT EXISTS ix_expenses_workspace_due_date ON expenses(workspace_id, due_date) WHERE deleted_at IS NULL;

@@ -2,9 +2,11 @@ using FloraFinance.Domain.Accounts;
 using FloraFinance.Domain.Categories;
 using FloraFinance.Domain.Common;
 using FloraFinance.Domain.Incomes;
+using FloraFinance.Domain.Expenses;
 using FloraFinance.Domain.Workspaces;
 using FloraFinance.Application.Accounts;
 using FloraFinance.Application.Incomes;
+using FloraFinance.Application.Expenses;
 using FloraFinance.Application.Workspaces;
 
 namespace FloraFinance.Application.Abstractions;
@@ -32,6 +34,12 @@ public interface IIncomeRepository
 {
     Task AddAsync(Income income, CancellationToken cancellationToken);
     Task<IReadOnlyList<IncomeResponse>> ListAsync(Guid workspaceId, DateOnly? from, DateOnly? to, CancellationToken cancellationToken);
+}
+
+public interface IExpenseRepository
+{
+    Task AddAsync(Expense expense, CancellationToken cancellationToken);
+    Task<IReadOnlyList<ExpenseResponse>> ListAsync(Guid workspaceId, DateOnly? from, DateOnly? to, CancellationToken cancellationToken);
 }
 
 public interface IUnitOfWork { Task<Result> SaveChangesAsync(CancellationToken cancellationToken); }

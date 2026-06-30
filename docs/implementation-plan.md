@@ -32,7 +32,14 @@ A partir desta etapa o repositório passa a conter um scaffold backend alinhado 
    - Eventos de recálculo de dashboard e fluxo de caixa.
    - Endpoints para criar e listar por período.
 
-5. **Persistência inicial**
+5. **Expense Management**
+   - Aggregate `Expense`.
+   - Valor positivo, recorrência opcional e parcelamento opcional.
+   - Vínculo obrigatório com Workspace, Account e Category.
+   - Eventos de recálculo de dashboard e fluxo de caixa.
+   - Endpoints para criar e listar por período.
+
+6. **Persistência inicial**
    - `FloraFinanceDbContext` com mapeamentos EF Core.
    - SQL inicial em `backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql`.
 
@@ -46,4 +53,4 @@ dotnet build backend/FloraFinance.sln
 dotnet test backend/FloraFinance.sln
 ```
 
-Depois disso, ajustar qualquer incompatibilidade de compilação, gerar migrations EF Core oficiais, criar testes de integração com PostgreSQL e implementar o módulo Expense.
+Depois disso, ajustar qualquer incompatibilidade de compilação, gerar migrations EF Core oficiais, criar testes de integração com PostgreSQL e avançar para transferências, dashboard e fluxo de caixa mensal.
