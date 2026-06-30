@@ -81,3 +81,19 @@ CREATE TABLE IF NOT EXISTS expenses (
     )
 );
 CREATE INDEX IF NOT EXISTS ix_expenses_workspace_due_date ON expenses(workspace_id, due_date) WHERE deleted_at IS NULL;
+
+CREATE TABLE IF NOT EXISTS transfers (
+    id uuid PRIMARY KEY,
+    workspace_id uuid NOT NULL REFERENCES workspaces(id),
+    source_account_id uuid NOT NULL REFERENCES financial_accounts(id),
+    destination_account_id uuid NOT NULL REFERENCES financial_accounts(id),
+    amount numeric(18,2) NOT NULL CHECK (amount > 0),
+    currency varchar(3) NOT NULL,
+    transfer_date date NOT NULL,
+    description varchar(160) NULL,
+    created_at timestamptz NOT NULL,
+    updated_at timestamptz NULL,
+    deleted_at timestamptz NULL,
+    CONSTRAINT ck_transfers_distinct_accounts CHECK (source_account_id <> destination_account_id)
+);
+CREATE INDEX IF NOT EXISTS ix_transfers_workspace_transfer_date ON transfers(workspace_id, transfer_date) WHERE deleted_at IS NULL;

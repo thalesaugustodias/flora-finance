@@ -2,11 +2,13 @@ using FloraFinance.Application.Abstractions;
 using FloraFinance.Application.Accounts;
 using FloraFinance.Application.Incomes;
 using FloraFinance.Application.Expenses;
+using FloraFinance.Application.Transfers;
 using FloraFinance.Application.Workspaces;
 using FloraFinance.Domain.Accounts;
 using FloraFinance.Domain.Categories;
 using FloraFinance.Domain.Incomes;
 using FloraFinance.Domain.Expenses;
+using FloraFinance.Domain.Transfers;
 using FloraFinance.Domain.Workspaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,5 +54,17 @@ public sealed class ExpenseRepository(FloraFinanceDbContext db) : IExpenseReposi
         if (from.HasValue) query = query.Where(x => x.DueDate >= from.Value);
         if (to.HasValue) query = query.Where(x => x.DueDate <= to.Value);
         return await query.OrderBy(x => x.DueDate).Select(x => new ExpenseResponse(x.Id, x.WorkspaceId, x.AccountId, x.CategoryId, x.Description, x.Amount, x.Currency.Code, x.DueDate, x.PaidDate, x.Observation, x.IsRecurring, x.InstallmentNumber, x.InstallmentTotal, x.CreatedAt)).ToListAsync(cancellationToken);
+    }
+}
+
+public sealed class TransferRepository(FloraFinanceDbContext db) : ITransferRepository
+{
+    public async Task AddAsync(Transfer transfer, CancellationToken cancellationToken) => await db.Transfers.AddAsync(transfer, cancellationToken);
+    public async Task<IReadOnlyList<TransferResponse>> ListAsync(Guid workspaceId, DateOnly? from, DateOnly? to, CancellationToken cancellationToken)
+    {
+        var query = db.Transfers.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null);
+        if (from.HasValue) query = query.Where(x => x.TransferDate >= from.Value);
+        if (to.HasValue) query = query.Where(x => x.TransferDate <= to.Value);
+        return await query.OrderByDescending(x => x.TransferDate).Select(x => new TransferResponse(x.Id, x.WorkspaceId, x.SourceAccountId, x.DestinationAccountId, x.Amount, x.Currency.Code, x.TransferDate, x.Description, x.CreatedAt)).ToListAsync(cancellationToken);
     }
 }

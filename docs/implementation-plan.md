@@ -39,7 +39,14 @@ A partir desta etapa o repositório passa a conter um scaffold backend alinhado 
    - Eventos de recálculo de dashboard e fluxo de caixa.
    - Endpoints para criar e listar por período.
 
-6. **Persistência inicial**
+6. **Transfer Management**
+   - Aggregate `Transfer`.
+   - Origem e destino obrigatórios e diferentes.
+   - Valor positivo sem alterar patrimônio consolidado.
+   - Eventos de recálculo de dashboard e fluxo de caixa.
+   - Endpoints para criar e listar por período.
+
+7. **Persistência inicial**
    - `FloraFinanceDbContext` com mapeamentos EF Core.
    - SQL inicial em `backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql`.
 
@@ -53,4 +60,4 @@ dotnet build backend/FloraFinance.sln
 dotnet test backend/FloraFinance.sln
 ```
 
-Depois disso, ajustar qualquer incompatibilidade de compilação, gerar migrations EF Core oficiais, criar testes de integração com PostgreSQL e avançar para transferências, dashboard e fluxo de caixa mensal.
+Depois disso, ajustar qualquer incompatibilidade de compilação, gerar migrations EF Core oficiais, criar testes de integração com PostgreSQL e avançar para dashboard executivo e fluxo de caixa mensal.
