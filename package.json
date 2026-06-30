@@ -1,0 +1,13 @@
+{
+  "name": "flora-finance",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check test/domain.test.js",
+    "validate:scaffold": "node scripts/validate-scaffold.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
