@@ -11,8 +11,14 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IIncomeRepository, IncomeRepository>();
 builder.Services.AddScoped<FloraFinance.Application.Workspaces.RegisterUserWorkspaceBootstrapHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Workspaces.WorkspaceQueryHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Workspaces.UpdateWorkspaceHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Workspaces.ArchiveWorkspaceHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Accounts.CreateAccountHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Accounts.AccountQueryHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Accounts.ArchiveAccountHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Incomes.CreateIncomeHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Incomes.IncomeQueryHandler>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
