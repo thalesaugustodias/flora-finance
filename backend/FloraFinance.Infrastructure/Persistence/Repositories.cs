@@ -3,6 +3,8 @@ using FloraFinance.Application.Accounts;
 using FloraFinance.Application.Incomes;
 using FloraFinance.Application.Expenses;
 using FloraFinance.Application.Transfers;
+using FloraFinance.Application.Dashboard;
+using FloraFinance.Application.CashFlow;
 using FloraFinance.Application.Workspaces;
 using FloraFinance.Domain.Accounts;
 using FloraFinance.Domain.Categories;
@@ -66,5 +68,56 @@ public sealed class TransferRepository(FloraFinanceDbContext db) : ITransferRepo
         if (from.HasValue) query = query.Where(x => x.TransferDate >= from.Value);
         if (to.HasValue) query = query.Where(x => x.TransferDate <= to.Value);
         return await query.OrderByDescending(x => x.TransferDate).Select(x => new TransferResponse(x.Id, x.WorkspaceId, x.SourceAccountId, x.DestinationAccountId, x.Amount, x.Currency.Code, x.TransferDate, x.Description, x.CreatedAt)).ToListAsync(cancellationToken);
+    }
+}
+
+public sealed class DashboardReadRepository(FloraFinanceDbContext db) : IDashboardReadRepository
+{
+    public async Task<DashboardExecutiveResponse> GetExecutiveAsync(Guid workspaceId, DateOnly referenceDate, CancellationToken cancellationToken)
+    {
+        var firstDay = new DateOnly(referenceDate.Year, referenceDate.Month, 1);
+        var nextMonth = firstDay.AddMonths(1);
+        var upcomingLimit = referenceDate.AddDays(15);
+        var balance = await db.Accounts.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && !x.IsArchived).SumAsync(x => x.CurrentBalance, cancellationToken);
+        var income = await db.Incomes.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null && x.ReceivedDate >= firstDay && x.ReceivedDate < nextMonth).SumAsync(x => x.Amount, cancellationToken);
+        var expenses = await db.Expenses.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null && x.DueDate >= firstDay && x.DueDate < nextMonth).SumAsync(x => x.Amount, cancellationToken);
+        var upcoming = db.Expenses.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null && x.PaidDate == null && x.DueDate >= referenceDate && x.DueDate <= upcomingLimit);
+        var upcomingAmount = await upcoming.SumAsync(x => x.Amount, cancellationToken);
+        var upcomingCount = await upcoming.CountAsync(cancellationToken);
+        var score = CalculateHealthScore(balance, income, expenses, upcomingAmount);
+        return new DashboardExecutiveResponse(workspaceId, balance, income, expenses, income - expenses, upcomingAmount, upcomingCount, score, referenceDate);
+    }
+
+    private static int CalculateHealthScore(decimal balance, decimal income, decimal expenses, decimal upcoming)
+    {
+        var savingsRate = income > 0 ? Math.Max(0m, (income - expenses) / income) : 0m;
+        var runway = expenses > 0 ? Math.Min(balance / expenses, 6m) / 6m : 1m;
+        var upcomingPenalty = income > 0 ? Math.Min(upcoming / income, 1m) : upcoming > 0 ? 1m : 0m;
+        return (int)Math.Round(Math.Max(0m, Math.Min(100m, 45m * savingsRate + 45m * runway + 10m * (1m - upcomingPenalty))));
+    }
+}
+
+public sealed class CashFlowReadRepository(FloraFinanceDbContext db) : ICashFlowReadRepository
+{
+    public async Task<MonthlyCashFlowResponse> GetMonthlyAsync(Guid workspaceId, int year, int month, CancellationToken cancellationToken)
+    {
+        var firstDay = new DateOnly(year, month, 1);
+        var nextMonth = firstDay.AddMonths(1);
+        var openingBalance = await db.Accounts.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && !x.IsArchived).SumAsync(x => x.CurrentBalance, cancellationToken);
+        var incomes = await db.Incomes.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null && x.ReceivedDate >= firstDay && x.ReceivedDate < nextMonth).GroupBy(x => x.ReceivedDate).Select(g => new { Date = g.Key, Amount = g.Sum(x => x.Amount) }).ToListAsync(cancellationToken);
+        var expenses = await db.Expenses.AsNoTracking().Where(x => x.WorkspaceId == workspaceId && x.DeletedAt == null && x.DueDate >= firstDay && x.DueDate < nextMonth).GroupBy(x => x.DueDate).Select(g => new { Date = g.Key, Amount = g.Sum(x => x.Amount) }).ToListAsync(cancellationToken);
+        var incomeByDay = incomes.ToDictionary(x => x.Date, x => x.Amount);
+        var expenseByDay = expenses.ToDictionary(x => x.Date, x => x.Amount);
+        var projected = openingBalance;
+        List<CashFlowDayResponse> days = [];
+        for (var day = firstDay; day < nextMonth; day = day.AddDays(1))
+        {
+            var income = incomeByDay.GetValueOrDefault(day);
+            var expense = expenseByDay.GetValueOrDefault(day);
+            var net = income - expense;
+            projected += net;
+            days.Add(new CashFlowDayResponse(day, income, expense, net, projected));
+        }
+        return new MonthlyCashFlowResponse(workspaceId, year, month, openingBalance, days);
     }
 }

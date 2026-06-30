@@ -9,6 +9,8 @@ using FloraFinance.Application.Accounts;
 using FloraFinance.Application.Incomes;
 using FloraFinance.Application.Expenses;
 using FloraFinance.Application.Transfers;
+using FloraFinance.Application.Dashboard;
+using FloraFinance.Application.CashFlow;
 using FloraFinance.Application.Workspaces;
 
 namespace FloraFinance.Application.Abstractions;
@@ -48,6 +50,16 @@ public interface ITransferRepository
 {
     Task AddAsync(Transfer transfer, CancellationToken cancellationToken);
     Task<IReadOnlyList<TransferResponse>> ListAsync(Guid workspaceId, DateOnly? from, DateOnly? to, CancellationToken cancellationToken);
+}
+
+public interface IDashboardReadRepository
+{
+    Task<DashboardExecutiveResponse> GetExecutiveAsync(Guid workspaceId, DateOnly referenceDate, CancellationToken cancellationToken);
+}
+
+public interface ICashFlowReadRepository
+{
+    Task<MonthlyCashFlowResponse> GetMonthlyAsync(Guid workspaceId, int year, int month, CancellationToken cancellationToken);
 }
 
 public interface IUnitOfWork { Task<Result> SaveChangesAsync(CancellationToken cancellationToken); }

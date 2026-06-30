@@ -12,6 +12,8 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IIncomeRepository, IncomeRepository>();
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<ITransferRepository, TransferRepository>();
+builder.Services.AddScoped<IDashboardReadRepository, DashboardReadRepository>();
+builder.Services.AddScoped<ICashFlowReadRepository, CashFlowReadRepository>();
 builder.Services.AddScoped<FloraFinance.Application.Workspaces.RegisterUserWorkspaceBootstrapHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Workspaces.WorkspaceQueryHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Workspaces.UpdateWorkspaceHandler>();
@@ -25,6 +27,8 @@ builder.Services.AddScoped<FloraFinance.Application.Expenses.CreateExpenseHandle
 builder.Services.AddScoped<FloraFinance.Application.Expenses.ExpenseQueryHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Transfers.CreateTransferHandler>();
 builder.Services.AddScoped<FloraFinance.Application.Transfers.TransferQueryHandler>();
+builder.Services.AddScoped<FloraFinance.Application.Dashboard.DashboardQueryHandler>();
+builder.Services.AddScoped<FloraFinance.Application.CashFlow.CashFlowQueryHandler>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -34,4 +38,6 @@ app.MapAccountEndpoints();
 app.MapIncomeEndpoints();
 app.MapExpenseEndpoints();
 app.MapTransferEndpoints();
+app.MapDashboardEndpoints();
+app.MapCashFlowEndpoints();
 app.Run();

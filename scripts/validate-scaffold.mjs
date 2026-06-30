@@ -17,9 +17,13 @@ const requiredFiles = [
   'backend/FloraFinance.Application/Expenses/ExpenseQueries.cs',
   'backend/FloraFinance.Application/Transfers/CreateTransfer.cs',
   'backend/FloraFinance.Application/Transfers/TransferQueries.cs',
+  'backend/FloraFinance.Application/Dashboard/DashboardQueries.cs',
+  'backend/FloraFinance.Application/CashFlow/CashFlowQueries.cs',
   'backend/FloraFinance.Api/Endpoints/WorkspaceEndpoints.cs',
   'backend/FloraFinance.Api/Endpoints/ExpenseEndpoints.cs',
   'backend/FloraFinance.Api/Endpoints/TransferEndpoints.cs',
+  'backend/FloraFinance.Api/Endpoints/DashboardEndpoints.cs',
+  'backend/FloraFinance.Api/Endpoints/CashFlowEndpoints.cs',
   'backend/FloraFinance.Infrastructure/Persistence/FloraFinanceDbContext.cs',
   'backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql'
 ];
@@ -46,6 +50,10 @@ const transferEndpoints = readFileSync('backend/FloraFinance.Api/Endpoints/Trans
 for (const expected of ['MapPost(""', 'MapGet(""']) {
   if (!transferEndpoints.includes(expected)) throw new Error(`Transfer endpoints missing ${expected}`);
 }
+const dashboardEndpoints = readFileSync('backend/FloraFinance.Api/Endpoints/DashboardEndpoints.cs', 'utf8');
+if (!dashboardEndpoints.includes('executive')) throw new Error('Dashboard endpoint missing executive route');
+const cashFlowEndpoints = readFileSync('backend/FloraFinance.Api/Endpoints/CashFlowEndpoints.cs', 'utf8');
+if (!cashFlowEndpoints.includes('monthly')) throw new Error('Cash flow endpoint missing monthly route');
 const migration = readFileSync('backend/FloraFinance.Infrastructure/Persistence/Migrations/0001_initial.sql', 'utf8');
 for (const expected of ['CREATE TABLE IF NOT EXISTS workspaces', 'financial_accounts', 'categories', 'incomes', 'expenses', 'transfers']) {
   if (!migration.includes(expected)) throw new Error(`Migration missing ${expected}`);
